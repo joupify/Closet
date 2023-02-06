@@ -1,0 +1,63 @@
+<p style="color: green"><%= notice %></p>
+
+<p style="color: green"><%= notice %></p>
+
+<h1 class= "title is-2">Products</h1>
+
+
+
+  
+      <p style="color: green"><%= notice %></p>
+      <div class="container">
+        <div class="row">
+          <div class="col 4" id="cart">
+            <% if @cart && @cart.line_items.any? %>
+              <%= render @cart %>
+              <%= button_to 'Show cart', @cart %>
+            <% else %>
+              <h2>PANIER VIDE </h2>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<div id="products">
+
+  <div class ="block">
+    <div class ="columns">
+     
+     <% @products.each do |product| %>
+      <div class = "column">
+      <a href="#">
+        <img src="<%= product.image.url %>" alt="<%= product.name %>">
+      </a>
+        <p class = "title is-5"><%= product.name%></p>
+        
+        <p class ="button" button is-primary><%= product.description%></p>
+        <p><%= product.price%></p>
+        <p class = "button is-warning"><%= link_to "Show this product", product %></p><br>
+
+        <% if product.user %>
+          <p class="has-text-gray fg pt1">Sold by <%= product.user.name %></p>
+        <% end %>
+
+         <%= link_to "Add to cart", line_items_path(product_id: product.id), method: :post %> <br>
+         <%= button_to 'destroy', product_path(product.id), method: :delete, data: {confirm: "Are you sure? " }, class: "button is-small mb4"%>
+         <%= link_to "show cart", @cart%>
+ 
+    </div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>s
+<%= link_to "New product", new_product_path %>
+
+
+

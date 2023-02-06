@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="https://js.stripe.com/v3/"></script>
+         
+        
+         
+
+         <title>closet</title>
+         
+      
+         <!-- CSS -->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+          <%= stylesheet_link_tag "styles.css", media: "all" %>
+         <!-- CSS -->
+         
+
+
+         <!-- FONT -->
+         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap" rel="stylesheet">
+         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+         <!-- FONT -->
+      </head>
+
+
+<body >
+
+
+ <section class="hero is-small is-warning ">
+  <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+        
+          <div class="hero-body">
+       
+        <div class="navbar-menu is-active" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+     
+      <div id="navbarMenuHeroA" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#">
+            Home
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="#">
+              FEMME
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="#">
+                VETEMENTS
+              </a>
+              <a class="navbar-item" href="">
+                SACS
+              </a>
+              <a class="navbar-item" href="#">
+                CHAUSSSURES
+              </a>
+              <a class="navbar-item" href="#">
+                ACCESSOIRES
+              </a>
+              <a class="navbar-item" href="#">
+                AUTRES
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="#/">
+                Contact
+              </a>
+              <a class="navbar-item is-active" href="#">
+                ----
+              </a>
+            </div>
+          </div>
+     
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="#">
+              HOMME
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="#">
+                VETEMENTS
+              </a>
+              <a class="navbar-item" href="">
+                SACS
+              </a>
+              <a class="navbar-item" href="#">
+                CHAUSSSURES
+              </a>
+              <a class="navbar-item" href="#">
+                ACCESSOIRES
+              </a>
+            </div>
+          </div>
+          
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                DECORATIONS
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="#">
+                 DECORATIONS
+                </a>
+              </div>
+          </div>
+     
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                AUTRES
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="#">
+                  AUTRES
+                </a>
+              </div>
+          </div>
+             
+         <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                Contact
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="#">
+                  Contact
+                </a>
+              </div>
+            </div>
+            </div>
+            </div>
+
+      
+         <div class="navbar-end"> 
+           <div class="navbar-item">
+            <div class="control">
+
+              <div>
+              
+             <% if total_cart_items %>
+              <%= link_to root_path(@cart.try(:id)), class:"navbar-item button is-warning" do  %>
+              <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart
+                <%= cart_count_over_one %>
+                </span>
+              <% end %>
+            <% end %>
+            
+             
+                    
+             <% if user_signed_in? %>
+               
+                <a href="<%= edit_user_registration_path %>">Account</a>
+                <a href="<%= new_product_path %>"> Sell </a>
+                <a href="<%= products_path %>"> AddItems </a>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+       
+             <% else %>
+
+             <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-warning" %>
+             <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-warning"%>
+
+       
+                <%# <a href="<%= new_user_session_path%>"> Se connecter </a> %>
+                <%# <a class="button is-primary is-inverted" %>
+                <%# href="<%= new_user_registration_path %>"> s'inscrire </a> %>
+             
+            <% end %>
+
+            </div>
+            </div>
+            </div>
+           </div>
+        </div>
+      </div>
+   </nav> 
+
+ </section>
+
+
+<div class ="block">
+  <%= yield %>
+</div>
+            
+</body>
+    
+
+</html>
+
+
