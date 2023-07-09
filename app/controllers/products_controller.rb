@@ -8,9 +8,11 @@ class ProductsController < ApplicationController
   
 
   end
-
+ 
   # GET /products/1 or /products/1.json
-  def show
+  def 
+    show
+  
   end
 
   # GET /products/new
@@ -18,6 +20,12 @@ class ProductsController < ApplicationController
     @product = current_user.products.build
     
     @product.image = params[:file]
+    # p = Product.new(params[:product])
+    # p.images.file.nil?
+    # p.save!
+    # p.images[0].url # => '/url/to/file.png'
+    # p.images[0].current_path # => 'path/to/file.png'
+    # p.images[0].identifier # => 'file.png'
     
   
     
@@ -73,6 +81,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :image)
+      params.require(:product).permit(:name, :description, :price, :image, {images: []})
     end
 end

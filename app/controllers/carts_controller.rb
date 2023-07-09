@@ -1,12 +1,12 @@
 class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :cart_not_found
-  before_action :set_cart, only: %i[ show edit update destroy ]
+  before_action :set_cart, only: %i[ show edit update destroy ] 
   
 
   # GET /carts or /carts.json
   def index
     @carts = Cart.all
-  end
+  end 
 
   # GET /carts/1 or /carts/1.json
   
@@ -62,10 +62,8 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1 or /carts/1.json
   def destroy
-    @cart.destroy
-    
-  
-
+    @cart.destroy if @cart.id == session[:cart_id]
+    session[:cart_id] = nil
     respond_to do |format|
       format.html { redirect_to root_path, notice: "Cart was successfully destroyed." }
       format.json { head :no_content }
@@ -75,7 +73,7 @@ class CartsController < ApplicationController
   
   private
 
-  def cart_not_found
+  def cart_not_found 
     logger.error "invalid cart #{params[:id]}"
     redirect_to root_path, notice: "Cart doesn't exist"
   end

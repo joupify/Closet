@@ -6,7 +6,7 @@ class LineItem < ApplicationRecord
   
 
 
-  after_initialize do
+  after_initialize do 
     self.quantity ||= 1
   end
   def total

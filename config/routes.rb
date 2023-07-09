@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   resources :carts
   resources :line_items
   resources :products
+
+  
+  
   
   scope '/checkout' do
+    get 'show', to: 'checkout#show', as: 'checkout_show'
     post 'create', to: 'checkout#create', as: 'checkout_create'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
     get 'success', to: 'checkout#success', as: 'checkout_success'
