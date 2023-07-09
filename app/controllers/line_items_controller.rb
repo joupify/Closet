@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_line_item, only: %i[ show edit update destroy ]
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create] 
 
   # GET /line_items or /line_items.json
   def index
@@ -20,12 +20,12 @@ class LineItemsController < ApplicationController
   # GET /line_items/1/edit 
   def edit
   end
-
+ 
   # POST /line_items or /line_items.json
   def create
-    @cart = Cart.find_by(id: session[:cart_id]) 
+    @cart = Cart.find_by(id: session[:cart_id])  
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product)
+    @line_item = @cart.add_product(product) 
 
     respond_to do |format|
       if @line_item.save
@@ -56,7 +56,7 @@ class LineItemsController < ApplicationController
   def destroy 
     @cart = Cart.find(session[:cart_id]) if session[:cart_id].present?
 
-    @line_item.destroy
+    @line_item.destroy 
   
     respond_to do |format|
       

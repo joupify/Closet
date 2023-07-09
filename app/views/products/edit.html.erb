@@ -1,10 +1,26 @@
-<h1>Editing product</h1>
+<%= form_for(@product, :html => { :multipart => true }) do |f| %>
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
 
-<%= render "form", product: @product %>
+    <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
 
-<br>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
 
-<div>
-  <%= link_to "Show this product", @product %> |
-  <%= link_to "Back to products", products_path %>
-</div>
+    <div class="field">
+      <%= f.file_field :image, multiple: true %>
+    </div>
+
+  
+
+  <div class="actions">
+    <%= f.submit 'Create Product' %>
+  </div>
+<% end %>

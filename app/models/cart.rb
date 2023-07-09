@@ -2,7 +2,7 @@ class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_many :products, through: :line_items
 
-  require 'active_support/core_ext/hash/keys' 
+  require 'active_support/core_ext/hash/keys'  
  
 
 

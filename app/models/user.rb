@@ -2,11 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable 
  
    has_many :products
    has_many :orders 
    pay_customer default_payment_processor: :stripe
+   pay_customer stripe_attributes: :stripe_attributes 
+   
    
 
 

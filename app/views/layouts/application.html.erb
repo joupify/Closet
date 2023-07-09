@@ -5,18 +5,18 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <script src="https://js.stripe.com/v3/"></script>
-         
-        
-         
+
+
+
 
          <title>closet</title>
-         
-      
+
+
          <!-- CSS -->
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
           <%= stylesheet_link_tag "styles.css", media: "all" %>
          <!-- CSS -->
-         
+
 
 
          <!-- FONT -->
@@ -35,16 +35,16 @@
     <div class="hero-head">
       <nav class="navbar">
         <div class="container">
-        
+
           <div class="hero-body">
-       
+
         <div class="navbar-menu is-active" data-target="navbarExampleTransparentExample">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
-     
+
       <div id="navbarMenuHeroA" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href="#">
@@ -79,7 +79,7 @@
               </a>
             </div>
           </div>
-     
+
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="#">
               HOMME
@@ -99,7 +99,7 @@
               </a>
             </div>
           </div>
-          
+
           <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="#">
                 DECORATIONS
@@ -110,7 +110,7 @@
                 </a>
               </div>
           </div>
-     
+
           <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="#">
                 AUTRES
@@ -121,7 +121,7 @@
                 </a>
               </div>
           </div>
-             
+
          <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="#">
                 Contact
@@ -135,13 +135,13 @@
             </div>
             </div>
 
-      
-         <div class="navbar-end"> 
+
+         <div class="navbar-end">
            <div class="navbar-item">
             <div class="control">
 
               <div>
-              
+
              <% if total_cart_items %>
               <%= link_to root_path(@cart.try(:id)), class:"navbar-item button is-warning" do  %>
               <span class="icon is-small">
@@ -152,26 +152,20 @@
                 </span>
               <% end %>
             <% end %>
-            
-             
-                    
+
+
+
              <% if user_signed_in? %>
-               
+
                 <a href="<%= edit_user_registration_path %>">Account</a>
                 <a href="<%= new_product_path %>"> Sell </a>
                 <a href="<%= products_path %>"> AddItems </a>
                 <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-       
+
              <% else %>
 
-             <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-warning" %>
-             <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-warning"%>
-
-       
-                <%# <a href="<%= new_user_session_path%>"> Se connecter </a> %>
-                <%# <a class="button is-primary is-inverted" %>
-                <%# href="<%= new_user_registration_path %>"> s'inscrire </a> %>
-             
+              <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-warning" %>
+              <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-warning"%>
             <% end %>
 
             </div>
@@ -180,7 +174,7 @@
            </div>
         </div>
       </div>
-   </nav> 
+   </nav>
 
  </section>
 
@@ -188,10 +182,8 @@
 <div class ="block">
   <%= yield %>
 </div>
-            
+
 </body>
-    
+
 
 </html>
-
-

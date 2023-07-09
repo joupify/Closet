@@ -4,48 +4,45 @@
 
 </div>
 
-</div> 
+</div>
 
 <section class="section">
-<div >
-<ul>
+  <div class="table-stripped">
+  <ul>
 
-    <% cart.line_items.each do |item| %>
-      <div class= "item">
-      <div>
+      <% cart.line_items.each do |item| %>
+        <div class= "item">
+          <div>
             <li><%= item.product.name %>
-            <%= item.quantity %>
-            <span class="badge badge-info"><%= number_to_currency(item.total, unit:"€", separator:",", format:"%n %u") %></li>
+             <%= item.quantity %>
+              <span class="badge badge-info"><%= number_to_currency(item.total, unit:"€", separator:",", format:"%n %u") %></li>
 
+        <div class="has-text-right">
+          <%= button_to 'Remove Item', item, method: :delete, data: {confirm: "Are you sure? " }, class: "button is-small mb4" %>
+        </div>
+
+
+      <% end %>
+  </ul>
+
+
+
+
+      <p>
+      <%= button_to "Acheter", new_order_path, method: :get, class:" button is-primary is-rounded" %> <br>
+      <br>
+      <p>
+      <%= button_to 'Vider le panier', cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-warning" %>
+      </p>
+      </p>
+      <div class="column total  has-text-right">
+        <h4 class="title is-2">
+          <span >Total:</span> <%= number_to_currency(cart.total) %>
+        </h4>
       </div>
 
-      
-      <div class="has-text-right">
-        <%= button_to 'Remove Item', item, method: :delete, data: {confirm: "Are you sure? " }, class: "button is-small mb4" %>
-      </div>
-
-      
-     <% end %>
-</ul>    
 
 
 
-
-    <p>
-    <%= button_to "Acheter", new_order_path, method: :get, class:" button is-primary is-rounded" %> <br>
-    <br>
-    <p>
-    <%= button_to 'Vider le panier', cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-warning" %>
-    </p>
-    </p>
-    <div class="column total  has-text-right">
-      <h4 class="title is-2">
-        <span >Total:</span> <%= number_to_currency(cart.total) %>
-      </h4>
-    </div>
-
-    
-    
-   
   </div>
 </section>

@@ -66,6 +66,10 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
   config.action_mailer.default_url_options = { host: '', port: 3000 }
 
+  # pour descativer le mode production
+  config.active_record.sqlite3_production_warning = false
+
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
