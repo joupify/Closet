@@ -53,7 +53,9 @@ gem "braintree", "~> 4.7"
 gem "paddle_pay", "~> 0.2"
 # To use Receipts gem for creating invoice and receipt PDFs, also include:
 gem "receipts", "~> 2.0"
-
+gem "bootstrap", "~> 5.2"
+gem "font-awesome-sass", "~> 6.1"
+gem "simple_form"
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -63,7 +65,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -76,7 +78,7 @@ group :development, :test do
   gem "ruby-debug-ide", "~> 0.7.3"
   gem "debase", "~> 0.2.4"
   # end debugger gem
-  
+
 end
 
 group :development do
